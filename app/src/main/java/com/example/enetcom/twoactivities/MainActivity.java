@@ -11,7 +11,10 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE =
             "com.example.android.twoactivities.extra.MESSAGE";
+    public static final int TEXT_REQUEST = 1;
     private EditText mMessageEditText;
+    private TextView mReplyHeadTextView;
+    private TextView mReplyTextView;
     private static final String LOG_TAG =
             MainActivity.class.getSimpleName();
     @Override
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mMessageEditText = findViewById(R.id.editText_main);
+        mReplyHeadTextView = findViewById(R.id.text_header_reply);
+        mReplyTextView = findViewById(R.id.text_message_reply);
     }
 
     public void launchSecondActivity(View view) {

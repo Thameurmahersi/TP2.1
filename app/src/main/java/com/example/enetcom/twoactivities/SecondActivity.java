@@ -1,9 +1,14 @@
 package com.example.enetcom.twoactivities;
+startActivityForResult(intent, TEXT_REQUEST);
+public static final String EXTRA_REPLY =
+        "com.example.android.twoactivities.extra.REPLY";
 
-import androidx.appcompat.app.AppCompatActivity;
+private EditText mReply;
+        import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
@@ -16,5 +21,14 @@ public class SecondActivity extends AppCompatActivity {
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.text_message);
         textView.setText(message);
+        mReply = findViewById(R.id.editText_second);
+    }
+
+    public void returnReply(View view) {
+        String reply = mReply.getText().toString();
+        Intent replyIntent = new Intent();
+        replyIntent.putExtra(EXTRA_REPLY, reply);
+        setResult(RESULT_OK,replyIntent);
+        finish();
     }
 }
